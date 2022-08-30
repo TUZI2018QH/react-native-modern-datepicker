@@ -69,7 +69,7 @@ const Header = ({ changeMonth }) => {
               activeOpacity={0.7}
               style={[
                 style.centerWrapper,
-                { marginRight: I18nManager.isRTL ? 0 : 5, marginRight: I18nManager.isRTL ? 5 : 0 },
+                { marginLeft: I18nManager.isRTL ? 0 : 5, marginRight: I18nManager.isRTL ? 5 : 0 },
               ]}
               onPress={() =>
                 setMainState({
