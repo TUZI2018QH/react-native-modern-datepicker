@@ -1,6 +1,7 @@
 import {useRef, useState} from 'react';
 import {Animated, Easing, I18nManager} from 'react-native';
-import moment from 'moment-jalaali';
+// import moment from 'moment-jalaali';
+import moment from 'moment';
 
 const m = moment();
 /* const jalaaliConfigs = {
