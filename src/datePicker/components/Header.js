@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import {View, TouchableOpacity, Text, Image, StyleSheet, Animated, I18nManager} from 'react-native';
+import { View, TouchableOpacity, Text, Image, StyleSheet, Animated, I18nManager } from 'react-native';
 
-import {useCalendar} from '../DatePicker';
+import { useCalendar } from '../DatePicker';
 
-const Header = ({changeMonth}) => {
+const Header = ({ changeMonth }) => {
   const {
     options,
     disableDateChange,
@@ -19,7 +19,7 @@ const Header = ({changeMonth}) => {
   const style = styles(options);
   const [disableChange, setDisableChange] = useState(false);
   const [
-    {lastDate, shownAnimation, hiddenAnimation},
+    { lastDate, shownAnimation, hiddenAnimation },
     changeMonthAnimation,
   ] = utils.useMonthAnimation(mainState.activeDate, options.headerAnimationDistance, () =>
     setDisableChange(false),
@@ -64,28 +64,12 @@ const Header = ({changeMonth}) => {
             style.activeMonthYear,
             I18nManager.isRTL && style.reverseMonthYear,
           ]}>
-          <TouchableOpacity
-            activeOpacity={0.7}
-            style={[style.centerWrapper, style.monthYearWrapper, utils.flexDirection]}
-            onPress={() =>
-              !disableDateChange &&
-              setMainState({
-                type: 'toggleMonth',
-              })
-            }>
-            <Text style={[style.headerText, style.monthText]}>
-              {utils.getMonthYearText(mainState.activeDate).split(' ')[0]}
-            </Text>
-            <Text style={[style.headerText, style.monthText]}>
-              {utils.getMonthYearText(mainState.activeDate).split(' ')[1]}
-            </Text>
-          </TouchableOpacity>
           {mode === 'datepicker' && (
             <TouchableOpacity
               activeOpacity={0.7}
               style={[
                 style.centerWrapper,
-                {marginRight: I18nManager.isRTL ? 0 : 5, marginLeft: I18nManager.isRTL ? 5 : 0},
+                { marginRight: I18nManager.isRTL ? 0 : 5, marginRight: I18nManager.isRTL ? 5 : 0 },
               ]}
               onPress={() =>
                 setMainState({
@@ -97,6 +81,22 @@ const Header = ({changeMonth}) => {
               </Text>
             </TouchableOpacity>
           )}
+          <TouchableOpacity
+            activeOpacity={0.7}
+            style={[style.centerWrapper, style.monthYearWrapper, utils.flexDirection]}
+            onPress={() =>
+              !disableDateChange &&
+              setMainState({
+                type: 'toggleMonth',
+              })
+            }>
+            <Text style={[style.headerText, style.monthText]}>
+              {utils.getMonthYearText(mainState.activeDate).split(' ')[1]}
+            </Text>
+            <Text style={[style.headerText, style.monthText]}>
+              {utils.getMonthYearText(mainState.activeDate).split(' ')[0]}
+            </Text>
+          </TouchableOpacity>
         </Animated.View>
         <Animated.View
           style={[
@@ -210,4 +210,4 @@ Header.propTypes = {
   changeMonth: PropTypes.func,
 };
 
-export {Header};
+export { Header };
